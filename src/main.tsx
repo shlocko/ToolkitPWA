@@ -7,9 +7,9 @@ import FuelConverter from "./components/FuelConverter";
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter basename="ToolkitPWA">
             <Routes>
-                <Route path="/ToolkitPWA/" element={<App />}>
+                <Route path="/" element={<App />}>
                     <Route path="fuelConverter" element={<FuelConverter />} />
                 </Route>
             </Routes>
