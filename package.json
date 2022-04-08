@@ -1,7 +1,7 @@
 {
   "name": "toolkit",
   "private": true,
-  "homepage": "https://shlocko.github.io/pwa",
+  "homepage": "https://shlocko.github.io/ToolkitPWA",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
