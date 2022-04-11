@@ -22,6 +22,7 @@ function App() {
                 <div className={"nav"}>
                     <Link to={"/"} className={"navLink"}><Button className={"linkButton"}>Home</Button> </Link>
                     <Link to={"fuelConverter"} className={"navLink"}> <Button className={"linkButton"}>Fuel Converter </Button> </Link>
+                    <Link to={"incomeCalculator"} className={"navLink"}> <Button className={"linkButton"}>Income Calculator </Button> </Link>
                 </div>
                 <div className={"content"}>
                     <Outlet />
