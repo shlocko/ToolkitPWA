@@ -1,9 +1,14 @@
+import { registerSW } from 'virtual:pwa-register'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import './index.css'
 import App from './App'
-import FuelConverter from "./components/FuelConverter";
+import FuelConverter from "./components/FuelConverter"
+
+if ("serviceWorker" in navigator) { // && !/localhost/.test(window.location)) {
+    registerSW();
+}
 
 ReactDOM.render(
     <React.StrictMode>
