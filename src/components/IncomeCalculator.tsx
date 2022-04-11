@@ -50,9 +50,9 @@ function IncomeCalculator(){
             let monthlyIncome = yearlyIncome / 12
             
 
-            setYearly(yearlyIncome)
-            setMonthly(monthlyIncome)
-            setWeekly(weeklyIncome)
+            setYearly(+yearlyIncome.toFixed(2))
+            setMonthly(+monthlyIncome.toFixed(2))
+            setWeekly(+weeklyIncome.toFixed(2))
 
             setError(false)
 
