@@ -2,10 +2,10 @@
   text-align: center;
     background-color: #d0d2d5;
     margin: 0;
+    min-height: 100vh;
 }
 
 .App-header {
-  min-height: 100vh;
   display: flex;
   flex-direction: row;
     flex-wrap: wrap;
@@ -54,4 +54,8 @@ button {
 }
 .content{
     flex-grow: 1;
+}
+
+.drawer{
+    
 }
