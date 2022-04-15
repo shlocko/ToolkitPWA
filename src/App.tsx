@@ -19,13 +19,9 @@ import MenuIcon from '@mui/icons-material/Menu'
 function App() {
     
     const [drawerOpen, setDrawerOpen] = useState(false)
-    const toggleDrawer = (newState: boolean) => {
-        
-    }
     
     return (
         <div className="App">
-            <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton
@@ -43,7 +39,6 @@ function App() {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-            </Box>
             <Drawer className={"drawer"} anchor={"left"} open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                 <div className={"nav"} onClick={() => setDrawerOpen(false)}>
                     <Link to={"/"} className={"navLink"}><Button className={"linkButton"}>Home</Button> </Link>
