@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { useLocalStorage } from "@mantine/hooks"
 import { Input } from "@mui/material"
+import SelectInput from "@mui/material/Select/SelectInput";
 
 type fuelStop = {
     quantity: number,
@@ -11,19 +12,36 @@ type fuelStop = {
     date: number
 }
 function FuelTracker(){
+
+    const [data, setData] = useLocalStorage<Map<string, Array<fuelStop>>>({
+        key: "fuelStops",
+        defaultValue: new Map<string, Array<fuelStop>>(),
+        serialize(value: Map<string, Array<fuelStop>>): string {
+            let arr = value.entries()
+            let obj = Object.fromEntries(arr)
+            return JSON.stringify(obj)
+        },
+        deserialize(value: string): Map<string, Array<fuelStop>> {
+            let obj: Object = JSON.parse(value)
+            let map = new Map<string, Array<fuelStop>>(Object.entries(obj))
+            return map
+        }
+    })
+    console.log(data)
+    const vehicles = Array.from(data.keys())
+    
+    
     
     const [quantity, setQuantity] = useState("")
     const [mileage, setMileage] = useState("")
     const [cost, setCost] = useState("")
     const [topOff, setTopOff] = useState(true)
     const [missingPrev, setMissingPrev] = useState(false)
+    const [vehicle, setVehicle] = useState("new");
+    const [newVehicle, setNewVehicle] = useState("")
     
-    const [data, setData] = useLocalStorage<Array<fuelStop>>({
-        key: "fuelStops",
-        defaultValue: []
-    })
 
-    console.log(data)
+    
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if(!isNaN(+quantity) && !isNaN(+mileage) && !isNaN(+cost)) {
@@ -35,27 +53,59 @@ function FuelTracker(){
                 missingPrev: missingPrev,
                 date: Date.now()
             }
+            let veh: string
+            if(vehicle === "new"){
+                veh = newVehicle
+            }else{
+                veh = vehicle
+            }
             setData((current) => {
-                current.push(stop)
+                let stops: Array<fuelStop>
+                if(current.has(veh)){
+                    stops = current.get(veh)!
+                }else{
+                    stops = []
+                }
+
+                stops.push(stop)
+                current.set(veh, stops)
+                console.log(current)
                 return current
             })
+            console.log(data)
         }
     }
-     const list = data.map((stop) =>{
-        return <p>Fuel Quantity: {stop.quantity} Gallon - Mileage: {stop.mileage} - Cost: ${stop.cost}</p>
-})
+    
+    let vehicleOptions = vehicles.map((veh) => {
+        return <option value={veh}>{veh}</option>
+    })
+    let list;
+    if(vehicle!== "new"){
+        list = data.get(vehicle)!.map((stop) =>
+        <p>Gals: {stop.quantity} - Miles: {stop.mileage} - Cost: {stop.cost}</p>
+        )
+    }
     
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                
+                <p> Select Vehicle: </p><select value={vehicle} onChange={(e) => {
+                    setVehicle(e.target.value)
+                }}>
+                    {vehicleOptions}
+                    <option value="new">New Vehicle</option>
+                </select>
+                {vehicle==="new" ? <Input value={newVehicle} onChange={(e) => {setNewVehicle(e.target.value)}}/> : <br />}
+
                 <p>Input Quantity in Gallons: </p><Input type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
                 <p>Input Current Mileage: </p><Input type="text" value={mileage} onChange={(e) => setMileage(e.target.value)} />
                 <p>Input Cost/Gallon: </p><Input type="text" value={cost} onChange={(e) => setCost(e.target.value)} />
                 <br /><br />Top Off?<input type="checkbox" checked={topOff} onChange={(e) => setTopOff((current) => !current)}/>
                 <br /><br />Missing Previous Fillup?<input type="checkbox" checked={missingPrev} onChange={(e) => setMissingPrev((current) => !current)}/>
                 <br />
-                <Input type="submit" value="Submit" />
+                
+                
+                <br /><Input type="submit" value="Submit" />
             </form>
             {list}
         </div>
