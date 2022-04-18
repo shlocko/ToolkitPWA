@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useReducer, useState} from 'react'
 import { useLocalStorage } from "@mantine/hooks"
 import { Input } from "@mui/material"
 import SelectInput from "@mui/material/Select/SelectInput";
@@ -12,7 +12,7 @@ type fuelStop = {
     date: number
 }
 function FuelTracker(){
-
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
     const [data, setData] = useLocalStorage<Map<string, Array<fuelStop>>>({
         key: "fuelStops",
         defaultValue: new Map<string, Array<fuelStop>>(),
@@ -70,8 +70,15 @@ function FuelTracker(){
                 stops.push(stop)
                 current.set(veh, stops)
                 console.log(current)
+                setVehicle(newVehicle)
+                setTopOff(true)
+                setMissingPrev(false)
+                setCost("")
+                setMileage("")
+                setQuantity("")
                 return current
             })
+            forceUpdate()
             console.log(data)
         }
     }
