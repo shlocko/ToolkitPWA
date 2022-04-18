@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import {Input} from "@mui/material";
 
 
 function IncomeCalculator(){
@@ -64,12 +65,12 @@ function IncomeCalculator(){
     return (
         <div>
             <form>
-                <p>Hours Per Shift: </p><input type="text" name="hours" value={hoursShift} onChange={handleChange} />
-                <p>Shifts Per Week: </p><input type="text" name="shifts" value={shiftsWeek} onChange={handleChange} />
-                <p>Hourly Rate: </p><input type="text" name="hourly" value={hourly} onChange={handleChange} />
-                <p>Overtime Rate: </p><input type="text" name="ot" value={otRate} onChange={handleChange} />
-                <p>Extra Income Per Week: </p><input type="text" name="weeklyExtra" value={weeklyExtra} onChange={handleChange} />
-                <p>Tax Percentage: </p><input type="text" name="tax" value={taxRate} onChange={handleChange} />
+                <p>Hours Per Shift: </p><Input type="text" name="hours" value={hoursShift} onChange={handleChange} />
+                <p>Shifts Per Week: </p><Input type="text" name="shifts" value={shiftsWeek} onChange={handleChange} />
+                <p>Hourly Rate: </p><Input type="text" name="hourly" value={hourly} onChange={handleChange} />
+                <p>Overtime Rate: </p><Input type="text" name="ot" value={otRate} onChange={handleChange} />
+                <p>Extra Income Per Week: </p><Input type="text" name="weeklyExtra" value={weeklyExtra} onChange={handleChange} />
+                <p>Tax Percentage: </p><Input type="text" name="tax" value={taxRate} onChange={handleChange} />
 
             </form>
             <p>Weekly Income: {weekly}</p>

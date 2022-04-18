@@ -44,6 +44,7 @@ function App() {
                     <Link to={"/"} className={"navLink"}><Button className={"linkButton"}>Home</Button> </Link>
                     <Link to={"fuelConverter"} className={"navLink"}> <Button className={"linkButton"}>Fuel Converter </Button> </Link>
                     <Link to={"incomeCalculator"} className={"navLink"}> <Button className={"linkButton"}>Income Calculator </Button> </Link>
+                    <Link to={"fuelTracker"} className={"navLink"}> <Button className={"linkButton"}>Fuel Tracker </Button> </Link>
                 </div>
             </Drawer>
             
