@@ -44,7 +44,16 @@ function FuelTracker(){
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        if(quantity === "clear" || mileage === "clear" || cost === "clear") {
+            localStorage.setItem("fuelStops", JSON.stringify({}))
+            setCost("")
+            setMileage("")
+            setQuantity("")
+            forceUpdate()
+            return
+        }
         if(!isNaN(+quantity) && !isNaN(+mileage) && !isNaN(+cost)) {
+            
             let stop: fuelStop = {
                 quantity: +quantity,
                 mileage: +mileage,
