@@ -22,8 +22,13 @@ function FuelTracker(){
             return JSON.stringify(obj)
         },
         deserialize(value: string): Map<string, Array<fuelStop>> {
-            let obj: Object = JSON.parse(value)
-            let map = new Map<string, Array<fuelStop>>(Object.entries(obj))
+            let obj = JSON.parse(value)
+            let map: Map<string, fuelStop[]>;
+            if(typeof obj === "object") {
+                map = new Map<string, Array<fuelStop>>(Object.entries(obj))
+            }else{
+                map = new Map<string, Array<fuelStop>>(Object.entries({}))
+            }
             return map
         }
     })

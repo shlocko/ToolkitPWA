@@ -45,6 +45,9 @@ button {
     width: 100%;
 }
 
+.linkButton{
+}
+
 .nav{
     display: flex;
     flex-flow: column wrap;

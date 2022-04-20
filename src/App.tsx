@@ -39,17 +39,19 @@ function App() {
                             {barLabel}
                         </Typography>
                         <Typography variant="body2" component="div" >
-                            v0.1.2
+                            v0.1.6
                         </Typography>
                     </Toolbar>
                 </AppBar>
             <Drawer className={"drawer"} anchor={"left"} open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                 <div className={"nav"} onClick={() => setDrawerOpen(false)}>
-                    <Link to={"/"} className={"navLink"}><Button className={"linkButton"} onClick={() => {setBarLabel("Toolkit")}}>Home</Button> </Link>
-                    <Link to={"fuelConverter"} className={"navLink"}> <Button className={"linkButton"} onClick={() => {setBarLabel("Fuel Converter")}}>Fuel Converter </Button> </Link>
-                    <Link to={"incomeCalculator"} className={"navLink"}> <Button className={"linkButton"} onClick={() => {setBarLabel("Income Calculator")}}>Income Calculator </Button> </Link>
-                    <Link to={"fuelTracker"} className={"navLink"}> <Button className={"linkButton"} onClick={() => {setBarLabel("Fuel Tracker")}}>Fuel Tracker </Button> </Link>
-                    <Link to={"encounterTracker"} className={"navLink"}> <Button className={"linkButton"} onClick={() => {setBarLabel("Encounter Tracker")}}>Encounter Tracker </Button> </Link>
+                    <Link to={"/"} className={"navLink"}><Button className={"linkButton"} size="large" onClick={() => {setBarLabel("Toolkit")}}>Home</Button> </Link>
+                    <Link to={"fuelConverter"} className={"navLink"}> <Button className={"linkButton"} size="large" onClick={() => {setBarLabel("Fuel Converter")}}>Fuel Converter </Button> </Link>
+                    <Link to={"incomeCalculator"} className={"navLink"}> <Button className={"linkButton"} size="large" onClick={() => {setBarLabel("Income Calculator")}}>Income Calculator </Button> </Link>
+                    <Link to={"fuelTracker"} className={"navLink"}> <Button className={"linkButton"} size="large" onClick={() => {setBarLabel("Fuel Tracker")}}>Fuel Tracker </Button> </Link>
+                    <Link to={"encounterTracker"} className={"navLink"}> <Button className={"linkButton"} size="large" onClick={() => {setBarLabel("Encounter Tracker")}}>Encounter Tracker </Button> </Link>
+                    
+                    <Link to={"debug"} className={"navLink"}> <Button className={"linkButton"} size="large" onClick={() => {setBarLabel("Debug")}}>Debug </Button> </Link>
                 </div>
             </Drawer>
             

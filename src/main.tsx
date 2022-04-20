@@ -8,6 +8,7 @@ import FuelConverter from "./components/FuelConverter"
 import IncomeCalculator from "./components/IncomeCalculator";
 import FuelTracker from "./components/FuelTracker";
 import EncounterTracker from "./components/EncounterTracker";
+import Debug from "./components/Debug";
 
 if ("serviceWorker" in navigator) { // && !/localhost/.test(window.location)) {
     registerSW();
@@ -22,6 +23,7 @@ ReactDOM.render(
                     <Route path="incomeCalculator" element={<IncomeCalculator />} />
                     <Route path="fuelTracker" element={<FuelTracker />} />
                     <Route path="encounterTracker" element={<EncounterTracker />} /> 
+                    <Route path="debug" element={<Debug />} />
                 </Route>
             </Routes>
         </BrowserRouter>
