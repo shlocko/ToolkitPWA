@@ -19,6 +19,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 function App() {
     
     const [drawerOpen, setDrawerOpen] = useState(false)
+    const [barLabel, setBarLabel] = useState("Toolkit")
     
     return (
         <div className="App">
@@ -35,19 +36,20 @@ function App() {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                            Toolkit
+                            {barLabel}
                         </Typography>
                         <Typography variant="body2" component="div" >
-                            v0.1.0
+                            v0.1.2
                         </Typography>
                     </Toolbar>
                 </AppBar>
             <Drawer className={"drawer"} anchor={"left"} open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                 <div className={"nav"} onClick={() => setDrawerOpen(false)}>
-                    <Link to={"/"} className={"navLink"}><Button className={"linkButton"}>Home</Button> </Link>
-                    <Link to={"fuelConverter"} className={"navLink"}> <Button className={"linkButton"}>Fuel Converter </Button> </Link>
-                    <Link to={"incomeCalculator"} className={"navLink"}> <Button className={"linkButton"}>Income Calculator </Button> </Link>
-                    <Link to={"fuelTracker"} className={"navLink"}> <Button className={"linkButton"}>Fuel Tracker </Button> </Link>
+                    <Link to={"/"} className={"navLink"}><Button className={"linkButton"} onClick={() => {setBarLabel("Toolkit")}}>Home</Button> </Link>
+                    <Link to={"fuelConverter"} className={"navLink"}> <Button className={"linkButton"} onClick={() => {setBarLabel("Fuel Converter")}}>Fuel Converter </Button> </Link>
+                    <Link to={"incomeCalculator"} className={"navLink"}> <Button className={"linkButton"} onClick={() => {setBarLabel("Income Calculator")}}>Income Calculator </Button> </Link>
+                    <Link to={"fuelTracker"} className={"navLink"}> <Button className={"linkButton"} onClick={() => {setBarLabel("Fuel Tracker")}}>Fuel Tracker </Button> </Link>
+                    <Link to={"encounterTracker"} className={"navLink"}> <Button className={"linkButton"} onClick={() => {setBarLabel("Encounter Tracker")}}>Encounter Tracker </Button> </Link>
                 </div>
             </Drawer>
             

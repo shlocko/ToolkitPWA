@@ -111,7 +111,7 @@ function FuelTracker(){
                     {vehicleOptions}
                 <MenuItem value="new">New Vehicle</MenuItem>
                 </Select>
-                {vehicle==="new" ? <Input value={newVehicle} onChange={(e) => {setNewVehicle(e.target.value)}}/> : <br />}
+                {vehicle==="new" ? <TextField value={newVehicle} onChange={(e) => {setNewVehicle(e.target.value)}}/> : <br />}
 
                 <p>Input Quantity in Gallons: </p><TextField value={quantity} onChange={(e) => setQuantity(e.target.value)} />
                 <p>Input Current Mileage: </p><TextField value={mileage} onChange={(e) => setMileage(e.target.value)} />
