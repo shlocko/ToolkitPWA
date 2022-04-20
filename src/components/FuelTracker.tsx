@@ -117,7 +117,7 @@ function FuelTracker(){
                 <p>Input Current Mileage: </p><TextField value={mileage} onChange={(e) => setMileage(e.target.value)} />
                 <p>Input Cost/Gallon: </p><TextField value={cost} onChange={(e) => setCost(e.target.value)} />
                 <br /><br />Top Off?<Checkbox checked={topOff} onChange={(e) => setTopOff((current) => !current)}/>
-                <br /><br />Missing Previous Fillup?<input type="checkbox" checked={missingPrev} onChange={(e) => setMissingPrev((current) => !current)}/>
+                <br /><br />Missing Previous Fillup?<Checkbox checked={missingPrev} onChange={(e) => setMissingPrev((current) => !current)}/>
                 <br />
                 
                 
