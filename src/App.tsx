@@ -37,6 +37,9 @@ function App() {
                         <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
                             Toolkit
                         </Typography>
+                        <Typography variant="body2" component="div" >
+                            v0.1.0
+                        </Typography>
                     </Toolbar>
                 </AppBar>
             <Drawer className={"drawer"} anchor={"left"} open={drawerOpen} onClose={() => setDrawerOpen(false)}>

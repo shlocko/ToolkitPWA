@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Input} from "@mui/material";
+import {Input, TextField} from "@mui/material";
 import './fuelConverter.css'
 
 
@@ -29,8 +29,8 @@ function FuelConverter() {
     return(
         <div>
             <form>
-                <p>AUD/Liter: </p><Input type="text" name="AUD" value={aud} onChange={handleChange} />
-                <p>USD/Gallon: </p><Input type="text" name="USD" value={usd} onChange={handleChange} />
+                <p>AUD/Liter: </p><TextField name="AUD" value={aud} onChange={handleChange} />
+                <p>USD/Gallon: </p><TextField name="USD" value={usd} onChange={handleChange} />
             </form>
         </div>
     )

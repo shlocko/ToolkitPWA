@@ -1,6 +1,6 @@
 import React, {useReducer, useState} from 'react'
 import { useLocalStorage } from "@mantine/hooks"
-import {Checkbox, Input, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material"
+import {Button, Checkbox, Input, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material"
 import SelectInput from "@mui/material/Select/SelectInput";
 
 type fuelStop = {
@@ -121,7 +121,7 @@ function FuelTracker(){
                 <br />
                 
                 
-                <br /><Input type="submit" value="Submit" />
+                <br /><Button type="submit" variant="contained" size="large"> Submit </Button>
             </form>
             {list}
         </div>
