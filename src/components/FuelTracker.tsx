@@ -1,6 +1,6 @@
 import React, {useReducer, useState} from 'react'
 import { useLocalStorage } from "@mantine/hooks"
-import { Input } from "@mui/material"
+import {Checkbox, Input, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material"
 import SelectInput from "@mui/material/Select/SelectInput";
 
 type fuelStop = {
@@ -37,7 +37,7 @@ function FuelTracker(){
     const [cost, setCost] = useState("")
     const [topOff, setTopOff] = useState(true)
     const [missingPrev, setMissingPrev] = useState(false)
-    const [vehicle, setVehicle] = useState("new");
+    const [vehicle, setVehicle] = useState(vehicles[0] || "new");
     const [newVehicle, setNewVehicle] = useState("")
     
 
@@ -79,7 +79,7 @@ function FuelTracker(){
                 stops.push(stop)
                 current.set(veh, stops)
                 console.log(current)
-                setVehicle(newVehicle)
+                setVehicle(veh)
                 setTopOff(true)
                 setMissingPrev(false)
                 setCost("")
@@ -93,7 +93,7 @@ function FuelTracker(){
     }
     
     let vehicleOptions = vehicles.map((veh) => {
-        return <option value={veh}>{veh}</option>
+        return <MenuItem value={veh}>{veh}</MenuItem>
     })
     let list;
     if(vehicle!== "new"){
@@ -105,18 +105,18 @@ function FuelTracker(){
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <p> Select Vehicle: </p><select value={vehicle} onChange={(e) => {
-                    setVehicle(e.target.value)
+                <p> Select Vehicle: </p><Select value={vehicle} onChange={(e: SelectChangeEvent) => {
+                    setVehicle(e.target.value as string)
                 }}>
                     {vehicleOptions}
-                    <option value="new">New Vehicle</option>
-                </select>
+                <MenuItem value="new">New Vehicle</MenuItem>
+                </Select>
                 {vehicle==="new" ? <Input value={newVehicle} onChange={(e) => {setNewVehicle(e.target.value)}}/> : <br />}
 
-                <p>Input Quantity in Gallons: </p><Input type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-                <p>Input Current Mileage: </p><Input type="text" value={mileage} onChange={(e) => setMileage(e.target.value)} />
-                <p>Input Cost/Gallon: </p><Input type="text" value={cost} onChange={(e) => setCost(e.target.value)} />
-                <br /><br />Top Off?<input type="checkbox" checked={topOff} onChange={(e) => setTopOff((current) => !current)}/>
+                <p>Input Quantity in Gallons: </p><TextField value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                <p>Input Current Mileage: </p><TextField value={mileage} onChange={(e) => setMileage(e.target.value)} />
+                <p>Input Cost/Gallon: </p><TextField value={cost} onChange={(e) => setCost(e.target.value)} />
+                <br /><br />Top Off?<Checkbox checked={topOff} onChange={(e) => setTopOff((current) => !current)}/>
                 <br /><br />Missing Previous Fillup?<input type="checkbox" checked={missingPrev} onChange={(e) => setMissingPrev((current) => !current)}/>
                 <br />
                 
